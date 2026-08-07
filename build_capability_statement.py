@@ -14,7 +14,7 @@ ACCENT = colors.HexColor("#2C5F5C")    # muted teal accent (professional, not fl
 RULE = colors.HexColor("#D6DCE1")      # hairline gray
 
 doc = SimpleDocTemplate(
-    "Nopster_Capability_Statement.pdf",
+    "capability-statement.pdf",
     pagesize=letter,
     topMargin=0.55 * inch,
     bottomMargin=0.5 * inch,
