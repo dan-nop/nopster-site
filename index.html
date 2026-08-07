@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nopster, Inc. — Full-Stack Software Development &amp; Systems Integration</title>
+<meta name="description" content="Nopster, Inc. is a Georgia-based full-stack software development firm specializing in custom applications and systems integration. NAICS 541511.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #14192B;
+    --paper: #F5F6F8;
+    --panel: #FFFFFF;
+    --accent: #2C6E68;
+    --accent-line: #9FC8C3;
+    --accent-dim: #E7EFEE;
+    --slate: #5B6472;
+    --rule: #DDE2E7;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    padding: 28px 0 0;
+  }
+  .brand-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 18px;
+  }
+  .brand {
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+  }
+  .brand span { color: var(--accent); }
+  nav a {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--slate);
+    margin-left: 22px;
+    letter-spacing: 0.02em;
+  }
+  nav a:hover { color: var(--accent); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 40px;
+    align-items: center;
+    padding: 64px 0 56px;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.12;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 18px;
+  }
+  .lede {
+    font-size: 1.05rem;
+    color: var(--slate);
+    max-width: 46ch;
+    margin-bottom: 30px;
+  }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    padding: 12px 20px;
+    border-radius: 3px;
+    display: inline-block;
+    letter-spacing: 0.01em;
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: #fff;
+  }
+  .btn-primary:hover { background: var(--accent); text-decoration: none; }
+  .btn-ghost {
+    border: 1px solid var(--rule);
+    color: var(--ink);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+  /* ---------- Diagram (signature element) ---------- */
+  .diagram-wrap { display: flex; justify-content: center; }
+  svg#diagram { width: 100%; max-width: 420px; height: auto; }
+  .node-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    fill: var(--slate);
+  }
+  .node-circle {
+    fill: var(--panel);
+    stroke: var(--accent);
+    stroke-width: 1.5;
+  }
+  .node-core {
+    fill: var(--ink);
+  }
+  .node-core-label {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    font-weight: 600;
+    fill: #fff;
+  }
+  .link-line {
+    stroke: var(--accent-line);
+    stroke-width: 1.5;
+    fill: none;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: draw 1.4s ease-out forwards;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .link-line { animation: none; stroke-dashoffset: 0; }
+  }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+
+  /* ---------- Sections ---------- */
+  section { padding: 44px 0; border-top: 1px solid var(--rule); }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 26px;
+  }
+  .section-num {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+  }
+  h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  /* Competencies grid */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px 32px;
+  }
+  .comp-item {
+    display: flex;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.94rem;
+    color: var(--ink);
+  }
+  .comp-tag {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  /* Technical stack rows */
+  .stack-rows { display: flex; flex-direction: column; gap: 14px; }
+  .stack-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 18px;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .stack-cat {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  /* Projects */
+  .project {
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 24px 26px;
+    margin-bottom: 16px;
+  }
+  .project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .project-title { font-size: 1.05rem; font-weight: 600; }
+  .project-client { font-family: var(--mono); font-size: 0.78rem; color: var(--slate); }
+  .project-desc { color: var(--slate); font-size: 0.92rem; margin: 10px 0 14px; max-width: 68ch; }
+  .stack { display: flex; flex-wrap: wrap; gap: 7px; }
+  .pill {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    background: var(--accent-dim);
+    padding: 4px 9px;
+    border-radius: 3px;
+  }
+
+  /* Company data strip */
+  .data-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 22px 26px;
+  }
+  .data-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--slate);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+  .data-value { font-size: 0.92rem; font-weight: 600; }
+  .data-value.small { font-size: 0.82rem; font-weight: 500; color: var(--ink); }
+
+  /* Footer / contact */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 40px 0 50px;
+  }
+  .footer-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .footer-brand { font-weight: 700; margin-bottom: 6px; }
+  .footer-meta { font-family: var(--mono); font-size: 0.8rem; color: var(--slate); line-height: 1.8; }
+  .footer-cta { text-align: right; }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding-top: 40px; }
+    .diagram-wrap { order: -1; }
+    h1 { font-size: 2rem; }
+    .comp-grid { grid-template-columns: 1fr; }
+    .data-strip { grid-template-columns: repeat(2, 1fr); }
+    nav a { margin-left: 14px; }
+    .footer-cta { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand-row">
+      <div class="brand">NOPSTER<span>.</span> INC</div>
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#data">Company Data</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero" style="border-top:none; padding-top:64px;">
+    <div>
+      <div class="eyebrow">Atlanta, GA — NAICS 541511</div>
+      <h1>Full-stack development &amp; systems integration.</h1>
+      <p class="lede">Custom applications, APIs, and the pipelines that connect them — built and delivered by the engineer you talk to.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:dan@nopster.dev">Get in touch</a>
+        <a class="btn btn-ghost" href="capability-statement.pdf">Download capability statement</a>
+      </div>
+    </div>
+    <div class="diagram-wrap">
+      <svg id="diagram" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram showing React, React Native, Node.js, MongoDB, Firebase, and cloud hosting connecting into Nopster">
+        <!-- connecting lines -->
+        <path class="link-line" d="M 90 55 L 200 160" style="animation-delay:0s"/>
+        <path class="link-line" d="M 310 55 L 200 160" style="animation-delay:0.1s"/>
+        <path class="link-line" d="M 55 160 L 200 160" style="animation-delay:0.2s"/>
+        <path class="link-line" d="M 345 160 L 200 160" style="animation-delay:0.3s"/>
+        <path class="link-line" d="M 90 265 L 200 160" style="animation-delay:0.4s"/>
+        <path class="link-line" d="M 310 265 L 200 160" style="animation-delay:0.5s"/>
+
+        <!-- outer nodes -->
+        <circle class="node-circle" cx="90" cy="55" r="30"/>
+        <text class="node-label" x="90" y="59" text-anchor="middle">React</text>
+
+        <circle class="node-circle" cx="310" cy="55" r="30"/>
+        <text class="node-label" x="310" y="59" text-anchor="middle">Node.js</text>
+
+        <circle class="node-circle" cx="55" cy="160" r="30"/>
+        <text class="node-label" x="55" y="164" text-anchor="middle">Mongo</text>
+
+        <circle class="node-circle" cx="345" cy="160" r="30"/>
+        <text class="node-label" x="345" y="164" text-anchor="middle">GCP</text>
+
+        <circle class="node-circle" cx="90" cy="265" r="30"/>
+        <text class="node-label" x="90" y="269" text-anchor="middle">RN / iOS</text>
+
+        <circle class="node-circle" cx="310" cy="265" r="30"/>
+        <text class="node-label" x="310" y="269" text-anchor="middle">Firebase</text>
+
+        <!-- core node -->
+        <circle class="node-core" cx="200" cy="160" r="38"/>
+        <text class="node-core-label" x="200" y="156" text-anchor="middle">NOPSTER</text>
+        <text class="node-core-label" x="200" y="171" text-anchor="middle" style="font-size:9px; opacity:0.75;">INC.</text>
+      </svg>
+    </div>
+  </section>
+
+  <section id="competencies">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>Core Competencies</h2>
+    </div>
+    <div class="comp-grid">
+      <div class="comp-item"><span class="comp-tag">WEB</span> Full-stack web &amp; mobile application development</div>
+      <div class="comp-item"><span class="comp-tag">INTEGRATE</span> Systems integration &amp; third-party API development</div>
+      <div class="comp-item"><span class="comp-tag">API</span> Microservices &amp; RESTful / GraphQL architecture</div>
+      <div class="comp-item"><span class="comp-tag">CLOUD</span> Cloud infrastructure &amp; deployment automation</div>
+      <div class="comp-item"><span class="comp-tag">DEVOPS</span> CI/CD pipeline design &amp; implementation</div>
+      <div class="comp-item"><span class="comp-tag">SUPPORT</span> Ongoing maintenance &amp; production support</div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>Technical Stack</h2>
+    </div>
+    <div class="stack-rows">
+      <div class="stack-row">
+        <div class="stack-cat">Languages</div>
+        <div class="stack">
+          <span class="pill">JavaScript</span><span class="pill">TypeScript</span><span class="pill">Java</span><span class="pill">C#</span><span class="pill">PHP</span><span class="pill">Python</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-cat">Front-End</div>
+        <div class="stack">
+          <span class="pill">React</span><span class="pill">Next.js</span><span class="pill">Ember.js</span><span class="pill">Angular 2+</span><span class="pill">HTML5</span><span class="pill">CSS3 / Sass</span><span class="pill">Bootstrap</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-cat">Back-End</div>
+        <div class="stack">
+          <span class="pill">Node.js</span><span class="pill">Express.js</span><span class="pill">Nest.js</span><span class="pill">Spring Boot</span><span class="pill">REST</span><span class="pill">GraphQL</span><span class="pill">Microservices</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-cat">Databases</div>
+        <div class="stack">
+          <span class="pill">MongoDB</span><span class="pill">MySQL</span><span class="pill">PostgreSQL</span><span class="pill">SQLite</span><span class="pill">SQL Server</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-cat">Cloud</div>
+        <div class="stack">
+          <span class="pill">AWS (EC2, S3, Lambda, RDS)</span><span class="pill">GCP (GKE, Pub/Sub)</span><span class="pill">DigitalOcean</span>
+        </div>
+      </div>
+      <div class="stack-row">
+        <div class="stack-cat">CI/CD</div>
+        <div class="stack">
+          <span class="pill">GitHub Actions</span><span class="pill">GitLab CI</span><span class="pill">Terraform</span><span class="pill">Docker</span><span class="pill">Kubernetes</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>Past Work</h2>
+    </div>
+
+    <div class="project">
+      <div class="project-top">
+        <div class="project-title">Online Proctoring Platform</div>
+        <div class="project-client">Wise Education Systems, Inc.</div>
+      </div>
+      <p class="project-desc">Developed new front-end and back-end features for a production online proctoring application, with ongoing engagement for support and issue resolution.</p>
+      <div class="stack">
+        <span class="pill">Node.js</span><span class="pill">Koa</span><span class="pill">MongoDB</span><span class="pill">React</span><span class="pill">GCP</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-top">
+        <div class="project-title">Mobile Video-Sharing Application</div>
+        <div class="project-client">Keepsee</div>
+      </div>
+      <p class="project-desc">Built new features for a mobile application enabling users to record and share video experiences with family and friends.</p>
+      <div class="stack">
+        <span class="pill">React Native</span><span class="pill">iOS</span><span class="pill">Firebase</span><span class="pill">GCP</span>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-top">
+        <div class="project-title">Commission Automation Platform</div>
+        <div class="project-client">Stakt Commissions</div>
+      </div>
+      <p class="project-desc">Built third-party integrations, backend services, front-end interface, and CI/CD deployment pipeline for a platform automating commission calculations and payouts.</p>
+      <div class="stack">
+        <span class="pill">Integrations</span><span class="pill">Backend: Nest.js</span><span class="pill">Frontend: Next.js</span><span class="pill">CI/CD</span><span class="pill">DigitalOcean</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="data">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2>Company Data</h2>
+    </div>
+    <div class="data-strip">
+      <div>
+        <div class="data-label">NAICS</div>
+        <div class="data-value">541511</div>
+      </div>
+      <div>
+        <div class="data-label">PSC</div>
+        <div class="data-value">DA01</div>
+      </div>
+      <div>
+        <div class="data-label">Business Type</div>
+        <div class="data-value small">Small Business, Minority-Owned</div>
+      </div>
+      <div>
+        <div class="data-label">UEI / CAGE</div>
+        <div class="data-value small">Pending — SAM.gov</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Nopster, Inc.</div>
+        <div class="footer-meta">
+          Daniel Nop, President<br>
+          Atlanta, GA — State of Incorporation: Georgia
+        </div>
+      </div>
+      <div class="footer-cta">
+        <div class="footer-meta">
+          <a href="mailto:dan@nopster.dev">dan@nopster.dev</a><br>
+          <a href="capability-statement.pdf">Capability Statement (PDF)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
