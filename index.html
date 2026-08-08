@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon-32.png">
+<link rel="apple-touch-icon" href="favicon-180.png">
 <style>
   :root {
     --ink: #14192B;
@@ -278,6 +280,33 @@
   .footer-meta { font-family: var(--mono); font-size: 0.8rem; color: var(--slate); line-height: 1.8; }
   .footer-cta { text-align: right; }
 
+  .brand-logo {
+  height: 67px;
+  width: auto;
+  display: block;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+  }
+  .brand-icon {
+    height: 20px;
+    width: auto;
+    display: block;
+  }
+
+  /* .footer-logo {
+    height: 32px;
+    width: auto;
+    display: block;
+    margin-bottom: 10px;
+  } */
+
   @media (max-width: 760px) {
     .hero { grid-template-columns: 1fr; padding-top: 40px; }
     .diagram-wrap { order: -1; }
@@ -294,7 +323,9 @@
 <header>
   <div class="wrap">
     <div class="brand-row">
-      <div class="brand">NOPSTER<span>.</span> INC</div>
+      <div class="brand">
+        <img src="assets/nopster-mark.svg" alt="" class="brand-icon">NOPSTER<span>.</span> INC
+      </div>
       <nav>
         <a href="#work">Work</a>
         <a href="#data">Company Data</a>
@@ -482,7 +513,7 @@
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <div class="footer-brand">Nopster, Inc.</div>
+        <img src="assets/nopster-logo-horizontal.svg" alt="Nopster, Inc." class="footer-logo">
         <div class="footer-meta">
           Daniel Nop, President<br>
           Atlanta, GA — State of Incorporation: Georgia

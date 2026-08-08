@@ -1,0 +1,16 @@
+<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+  <rect width="240" height="240" rx="40" fill="#14192B"/>
+
+  <!-- Edges forming an "N" -->
+  <line x1="60" y1="180" x2="60" y2="60" stroke="#9FC8C3" stroke-width="7" stroke-linecap="round"/>
+  <line x1="60" y1="60" x2="180" y2="180" stroke="#9FC8C3" stroke-width="7" stroke-linecap="round"/>
+  <line x1="180" y1="180" x2="180" y2="60" stroke="#9FC8C3" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Satellite nodes -->
+  <circle cx="60" cy="180" r="16" fill="#14192B" stroke="#9FC8C3" stroke-width="4"/>
+  <circle cx="180" cy="180" r="16" fill="#14192B" stroke="#9FC8C3" stroke-width="4"/>
+  <circle cx="180" cy="60" r="16" fill="#14192B" stroke="#9FC8C3" stroke-width="4"/>
+
+  <!-- Core node (brand anchor) -->
+  <circle cx="60" cy="60" r="20" fill="#2C6E68"/>
+</svg>

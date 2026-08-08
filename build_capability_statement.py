@@ -6,6 +6,7 @@ from reportlab.platypus import (
 )
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.enums import TA_LEFT
+from svglib.svglib import svg2rlg
 
 # ---- Palette ----
 INK = colors.HexColor("#1A2233")       # near-black navy for headers
@@ -40,14 +41,28 @@ styles = {
 
 story = []
 
+# ---- Logo mark ----
+# Using the icon-only mark (pure vector shapes, no embedded font/text) rather
+# than the full horizontal lockup SVG, since that one depends on a live
+# Google Fonts @import that PDF renderers won't reliably fetch. Keeping the
+# company name/tagline as real Reportlab text (below) guarantees it always
+# renders crisply regardless of font availability.
+logo = svg2rlg("assets/nopster-mark.svg")
+logo_target_height = 0.62 * inch
+logo_scale = logo_target_height / logo.height
+logo.width *= logo_scale
+logo.height *= logo_scale
+logo.scale(logo_scale, logo_scale)
+
 # ---- Header ----
 header_table = Table(
     [[
+        logo,
         Table(
             [[Paragraph("NOPSTER, INC.", styles["company"])],
              [Paragraph("Full-stack software development and systems integration &mdash; from custom "
                         "applications to the pipelines and APIs that connect them.", styles["tagline"])]],
-            colWidths=[4.6 * inch],
+            colWidths=[3.95 * inch],
         ),
         Table(
             [
@@ -65,10 +80,12 @@ header_table = Table(
             ]),
         ),
     ]],
-    colWidths=[4.6 * inch, 3.2 * inch],
+    colWidths=[0.55 * inch, 3.95 * inch, 2.8 * inch],
 )
 header_table.setStyle(TableStyle([
     ("VALIGN", (0, 0), (-1, -1), "TOP"),
+    ("LEFTPADDING", (0, 0), (0, 0), 0),
+    ("RIGHTPADDING", (0, 0), (0, 0), 8),
 ]))
 story.append(header_table)
 story.append(Spacer(1, 8))
